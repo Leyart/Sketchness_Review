@@ -1,0 +1,80 @@
+@(title: String, nav: String = "")(content: Html)
+
+@import be.objectify.deadbolt.java.views.html._
+@import be.objectify.deadbolt.core.utils.TemplateUtils._
+
+<!DOCTYPE html>
+<html lang="@lang().code()">
+<head>
+    <title>@title</title>
+
+    <!-- Le meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="The Cubrik Project Team">
+
+    <!-- Le scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="@routes.Assets.at("javascripts/createGuest.js")"></script>
+    <script src="@routes.Assets.at("javascripts/lib/bootstrap.min.js")"></script>
+    <script src="@routes.Application.jsRoutes" defer="defer"></script>
+
+    <!-- Le styles -->
+    <link href="@routes.Assets.at("stylesheets/lib/bootstrap.css")" rel="stylesheet">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main-auth.css")">
+
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+
+
+</head>
+
+<body>
+
+<div class="container">
+    <!--  @if(flash.contains(Application.FLASH_ERROR_KEY)) {
+    <div class="alert alert-error">
+        @flash().get(Application.FLASH_ERROR_KEY)
+    </div>
+    } 
+    @if(flash.contains(Application.FLASH_MESSAGE_KEY)) {
+    <div class="alert alert-success">
+        @flash().get(Application.FLASH_MESSAGE_KEY)
+    </div>
+    } -->
+    <div id="backgroundAllMain2Pages" class="backgroundimage-signup">
+
+            @subjectPresentOr() {
+            @defining(Application.getLocalUser(session())) { user =>
+                <div id="ProfileContenitor" class="btn-group">
+                    <div id="ProfileImage"/>
+                    <a id="ProfileLink" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="icon-user"></i> @user.name
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@routes.Application.profile()">@Messages("playauthenticate.navigation.profile")</a></li>
+						<!--Profile linking disabled in this version-->
+                        <!--<li><a href="@routes.Account.link()">@Messages("playauthenticate.navigation.link_more")</a></li>-->
+                        <li class="divider"></li>
+                        <li><a href="@routes.Application.doLogout"><i class="icon-off"></i> @Messages("playauthenticate.navigation.logout")</a></li>
+                    </ul>
+                </div>
+            }
+            }{
+            <!-- <a href="@routes.Application.login()" class="btn btn-primary btn-mini @("disabled".when(nav == "login"))">@Messages("playauthenticate.navigation.login")</a>       -->
+            }
+
+
+        @content
+    </div>
+</div>
+</div> <!-- /container -->
+
+</body>
+</html>

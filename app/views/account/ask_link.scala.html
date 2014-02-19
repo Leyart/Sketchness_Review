@@ -1,0 +1,46 @@
+@(acceptForm: Form[Account.Accept], newAccount: com.feth.play.module.pa.user.AuthUser)
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@label = {
+	@_providerIcon(newAccount.getProvider()) @Messages("playauthenticate.link.account.question",newAccount)
+}
+
+@main2(Messages("playauthenticate.link.account.title")) {
+
+    <div id="text-contenitor-content">
+       <!--  <h1 style="padding-top:20px;padding-left:75px">@Messages("playauthenticate.link.account.title")</h1>       -->
+        <p>
+
+        <form action="@routes.Account.doLink" method="POST" style="padding-top:50px;padding-left:80px">
+                @if(acceptForm.hasGlobalErrors) {
+                    <p class="error">
+                        <span class="label label-important">@acceptForm.globalError.message</span>
+                    </p>
+                }
+
+               @inputRadioGroup(
+                    acceptForm("accept"),
+                    options = Seq(
+                        "true"-> Messages("playauthenticate.link.account.true"),
+                        "false"->Messages("playauthenticate.link.account.false")
+                    ),
+                    '_label -> label,
+                    '_showConstraints -> false
+                )
+
+                <input type="submit" value="@Messages("playauthenticate.link.account.ok")" class="btn btn-primary">
+
+
+        </form>
+        </p>
+
+    </div>
+
+
+    <div id="preloaded-images">
+        <img src="../assets/images/UI/pergamena.png" width="1" height="1" alt="pergamena" />
+    </div>
+
+}

@@ -1,0 +1,87 @@
+@(localUser: models.User = null, room: String)
+
+@import controllers.routes.javascript._
+
+@main(Messages("playauthenticate.navigation.chatRoom"), "ChatRoom") {
+	<!--TODO: BETTER INTERFACE FOR THE ERRORS, POSSIBLY AN OVERLAY-->
+	<!--  <div id="onError" class="alert-message error">
+		<p>
+			<strong>Oops! </strong><span></span>
+		</p>
+	</div> -->
+
+	<div id="mainPage">
+
+		<!--THIS IS THE AREA IN WHICH THE DRAWINGS ARE MADE-->
+		<div id="gameArea" class="span10">
+			<div id="viewport">
+				<div id="canvaswindows">
+					<!-- CANVAS USED TO STORE THE LAST DRAWING SEGMENT-->
+					<canvas id="me" width="420" height="350"></canvas>
+					<!-- CANVAS TO TRACK THE POSITION OF THE DRAWING PLAYER-->
+					<canvas id="positions" width="420" height="350"></canvas>
+					<!-- CANVAS TO STORE THE ENTIRE DRAWINGS DONE SO FAR-->
+					<canvas id="draws" width="420" height="350"></canvas>
+					<!-- CANVAS USED TO SHOW THE IMAGE-->
+					<canvas id="task" width="420" height="350"></canvas>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="chatPanel" class="gameRoom gameChat">
+			<div id="messages" class="jscroll scroll-pane-arrows jspScrollable">
+			</div>
+		</div>
+		<textarea id="talk" class="gameTalk"></textarea>
+
+
+		<!-- A SIMPLE CANVAS USED AS AN HUD TO DRAW TOOLS-->
+		<div id="hudArea">
+			<canvas id="hud" width="800" height="300"></canvas>
+		</div>
+
+		<!--MESSAGES AND SCORES FOR THE PLAYERS-->
+		<div id="topMessage"></div>
+		<div id="timeCounter"></div>
+                <div id="canvasMessage"></div>
+                <div id="scoreBaloon">
+                    <div id="score"></div>
+                </div>
+                <div id="warnTag" style="display:none"><pre id="warnPre"></pre></div>
+
+		<!--HANDLING ALL THE USERS CURRENTLY CONNECTED-->
+                <div id="currentAvatar"></div>
+		<div id="currentNickname">@localUser.name</div>
+		<span id="opponent1"></span>
+		<span id="opponent2"></span>
+		<span id="opponent3"></span>
+		<span id="opponent4"></span>
+
+		<!--WE CAN'T USE ROUTES IN STATIC JAVASCRIPT, SO WE MUST REFERENCE THEM OUTSIDE-->
+		<div id="chatWebSocket" data-ws="@routes.Sketchness.chatStream(room).webSocketURL()"></div>
+		<div id="paintWebSocket" data-ws="@routes.Sketchness.paintStream(room).webSocketURL()"></div>
+
+		<script type="text/javascript" src="/assets/javascripts/chat.js"></script>
+		<script type="text/javascript" src="/assets/javascripts/paint.js"></script>
+                
+                <script type="text/javascript" src="@routes.JavascriptController.javascriptRoutes"></script>
+
+		<!-- DISABLE THE REFRESH BUTTON-->
+		<script type="text/javascript">
+			// To disable f5
+			require(["jquery"], function($) {
+				$(document).on("keydown", function (e) {
+					if (e.which == 116) e.preventDefault();
+				});
+			});
+		</script>
+        
+		<!-- BACK BUTTON IN THE GAME
+			<form id="backForm" action="@routes.Sketchness.lobby()">
+				<input id="username" name="username" class="input-small" type="hidden" value="@localUser.name" />      
+				<a href="@routes.Sketchness.lobby()"><button type="submit" id="backToLobby"></button></a> 
+			</form>          
+		-->
+</div>
+}

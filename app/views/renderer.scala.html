@@ -1,0 +1,39 @@
+@(imageID: String)
+
+<html>
+
+    <head>
+        <script src="@routes.Assets.at("javascripts/lib/jquery.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        
+    <div id="renderer">
+
+        <!--THIS IS THE AREA IN WHICH THE DRAWINGS ARE MADE-->
+        <form id="tagForm" style="display:none">
+            <span style="font-size: x-large; font-weight: bold;">Select a tag from the list:</span>
+            <select id="tagList" onchange="tagSelected()" style="font-size: x-large; font-weight: bold;">
+            </select>
+            </form>
+        <div id="drawArea" class="span10">
+            <div id="viewport">
+				<span id="canvaswindows">
+					<canvas id="draws" width="420" height="350" style="position:absolute;z-index:3;"></canvas>
+					<!-- CANVAS USED TO SHOW THE IMAGE-->
+					<canvas id="task" width="420" height="350"></canvas>
+				</span>
+                <span id="canvasmask">
+					<canvas id="mask" width="420" height="350" style="position:absolute;z-index:3;"></canvas>
+				</span>
+            </div>
+        </div>
+
+        <!--WE CAN'T USE ROUTES IN STATIC JAVASCRIPT, SO WE MUST REFERENCE THEM OUTSIDE-->
+        <div id="renderWebSocket" data-ws="@routes.Utilities.rendererStream(imageID).webSocketURL()">
+
+        <script type="text/javascript" src="/assets/javascripts/renderer.js"></script>
+
+    </div>
+    </div>
+</body>
+</html>

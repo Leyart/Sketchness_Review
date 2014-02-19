@@ -1,0 +1,54 @@
+@(changeForm: Form[controllers.Account.NicknameChange])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main2(Messages("playauthenticate.change.name.title")) {
+
+<!--    <h1>@Messages("playauthenticate.change.name.title")</h1>    -->
+
+<script>
+    window.onload=function(){
+    document.getElementById("ProfileImage").src="../../assets/images/registration/nation.png";
+
+    };
+</script>
+<p>
+
+
+
+        <form action="@routes.Account.doChangeNickname()" method="POST" style="padding-top:160px;padding-left:135px">
+            @if(changeForm.hasGlobalErrors) {
+                <p class="error">
+                    <span class="label label-important">@changeForm.globalError.message</span>
+                </p>
+            }
+
+
+                <div id="left-form-change">
+                    <div id="nickname-container" class="div-input-signup">
+                        @inputText(
+                        changeForm("nickname"),
+                        'placeholder -> "Nickname"
+                        )
+                    </div>
+                </div>
+
+    <input type="submit" id="endInput" class="signup-submit" value="" style="margin-top:35px;margin-left:70px" >
+
+        </form>
+
+</p>
+
+<a href="@routes.Application.profile"> <button type="submit" id="back"></button>        </a>
+
+<div id="preloaded-images">
+    <img src="../../assets/images/UI/backUnpressed.png" width="1" height="1" alt="backPressed" />
+    <img src="../../assets/images/UI/backHover.png" width="1" height="1" alt="backHover" />
+    <img src="../../assets/images/UI/backPressed.png" width="1" height="1" alt="backUnpressed" />
+    <img src="../../assets/images/registration/nation.png" width="1" height="1" alt="nation" />
+    <img src="../../assets/images/UI/endUnpressed.png" width="1" height="1" alt="endPressed" />
+    <img src="../../assets/images/UI/endHover.png" width="1" height="1" alt="endHover" />
+    <img src="../../assets/images/UI/endPressed.png" width="1" height="1" alt="endUnpressed" />
+</div>
+}

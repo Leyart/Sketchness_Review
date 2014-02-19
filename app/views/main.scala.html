@@ -1,0 +1,84 @@
+@(title: String, nav: String = "")(content: Html)
+
+@import be.objectify.deadbolt.java.views.html._
+@import be.objectify.deadbolt.core.utils.TemplateUtils._
+
+<!-- CLEANED CODE-->
+<!--THIS IS THE MAIN PAGE THAT IS SERVED BY THE PLAY FRAMEWORK-->
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Sketchness!</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+        <script src="@routes.Assets.at("javascripts/lib/bootstrap.min.js")"></script>
+        <script src="@routes.Application.jsRoutes" defer="defer"></script>
+        <!-- Le styles -->
+        <link href="@routes.Assets.at("stylesheets/lib/bootstrap.css")" rel="stylesheet">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main-auth.css")">
+
+     <!--   <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/lib/bootstrap.css")">        -->
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/lib/popUp.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+
+		<!-- styles needed by jScrollPane -->
+		<link type="text/css" href="@routes.Assets.at("stylesheets/lib/jquery.jscrollpane.css")" rel="stylesheet" media="all" />
+		<link type="text/css" href="@routes.Assets.at("stylesheets/jquery.jscrollpane.lozenge.css")" rel="stylesheet" media="all" />
+
+		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+
+		<script src="@routes.Assets.at("javascripts/polyfills.js")" type="text/javascript"></script>
+		<script src="@routes.Assets.at("javascripts/lib/require.js")" type="text/javascript"></script>
+		<script src="@routes.Assets.at("javascripts/require-config.js")" type="text/javascript"></script>
+
+        <script src="@routes.Assets.at("javascripts/createGuest.js")"></script>
+
+		<!-- Adding support for Internazionalization -->
+		<script type="text/javascript">
+			require(["i18n"], function(i18n) {
+				i18n.properties({
+					name: 'messages',
+					path: '/i18n?',
+					mode: 'map',
+					cache: true,
+					language: 'it'
+				});
+			});
+		</script>
+        <script>
+            window.onbeforeunload = bunload;
+
+            function bunload(){
+            var xhr = new XMLHttpRequest();
+            xhr.setTimeout(0);
+            xhr.open("get", "@routes.Application.doLogout", true);
+
+            xhr.send(null);
+            }
+        </script>
+
+        <script>
+            window.setInterval(function(){
+
+            var xhr = new XMLHttpRequest();
+            xhr.setTimeout(0);
+            xhr.open("get", "@routes.Sketchness.keepOnline", true);
+
+            xhr.send(null);
+
+            }, 1000*20);      <!-- Set interval between refreshes-->
+
+
+        </script>
+
+
+
+	</head>
+
+	<body>
+		<div class="content">
+			@content
+		</div>
+	</body>
+</html>

@@ -1,0 +1,206 @@
+text_area_message=Scrivi un messaggio qui...
+sketcher=lo Sketcher
+guesser=un Guesser
+points=punti
+waiting=In attesa di nuovi giocatori...
+draw=Disegna: 
+guess=Indovina l''oggetto disegnato!
+guessed=Indovinato! 
+solution=Soluzione: 
+leaderboard=Classifica:
+time=Tempo: 
+waitingfor=In attesa di 
+playerstostart= giocatori per iniziare.
+playertostart= giocatore per iniziare.
+join=è entrato nella stanza.
+quit=ha lasciato la partita.
+newround=Ha inizio un nuovo round!
+choosingroles=Sto scegliendo i ruoli...
+end=Il match è terminato!
+usernameused=Questo username è già in uso
+matchstarting=Sto caricando la partita...
+matchstarted=Il match è già iniziato
+thesketcheris=Lo SKETCHER è 
+acquiring=Sto creando la partita, attendere...
+asktag=Lo sketcher sta scegliendo...
+asktagsketcher=Scrivi l''oggetto da disegnare:
+skiptask=ha passato il round.
+notag=non ha scelto cosa disegnare.
+sketchertagging=ATTENDI che lo SKETCHER scelga l''oggetto.
+warnTag=Inserisci un nuovo tag per l''immagine.
+
+
+
+
+
+
+################################################
+##########Play Authenticate messages############
+################################################
+
+# Override default Play's validation messages
+
+# --- Constraints
+constraint.required=Required
+constraint.min=Minimum value: {0}
+constraint.max=Maximum value: {0}
+constraint.minLength=Minimum length: {0}
+constraint.maxLength=Maximum length: {0}
+constraint.email=Email
+
+# --- Formats
+format.date=Date (''{0}'')
+format.numeric=Numeric
+format.real=Real
+
+# --- Errors
+error.invalid=Valore non valido
+error.required=Questo campo e' richiesto
+error.number=Mi aspetto un valore numerico
+error.real=Mi aspetto un numero reale
+error.min=Dev'essere maggiore o uguale a {0}
+error.max=Dev'essere minore o uguale a {0}
+error.minLength=Lunghezza minima: {0}
+error.maxLength=Lunghezza massima: {0}
+error.email=E' richiesto un indirizzo mail valido
+error.pattern=Deve soddisfare {0}
+error.mailExists=E' probabile che tu ti sia già registrato. Per connettere il tuo account devi fare il login e premere il bottone "Aggiungi Provider" dal menu "Profilo".
+error.userLogged=Questo utente è attualmente loggato.
+error.userInBrowser=C'è già un utente connesso su questo browser
+error.pageNotFound= Pagina non trovata
+
+### --- play-authenticate START
+
+# play-authenticate: Initial translations
+
+playauthenticate.accounts.link.success=Account aggiunto con successo
+playauthenticate.accounts.merge.success=Account aggiunto con successo
+
+playauthenticate.verify_email.error.already_validated=Il tuo indirizzo mail e' gia' stato validato.
+playauthenticate.verify_email.error.set_email_first=Devi impostare un indirizzo mail prima.
+playauthenticate.verify_email.message.instructions_sent=Le istruzioni su come verificare il tuo indirizzo mail sono state spedite a {0}.
+playauthenticate.verify_email.success=Indirizzo mail ({0}) correttamente verificato.
+
+playauthenticate.reset_password.message.instructions_sent=Istruzioni su come modificare la tua password sono state inviate a {0}.
+playauthenticate.reset_password.message.email_not_verified=Il tuo account non e' stato ancora verificato. E' stata spedita una mail con le istruzioni per farlo. Prova a resettare la tua password successivamente.
+playauthenticate.reset_password.message.no_password_account=Il tuo nome utente non è stato ancora abilitato ad usare una password.
+playauthenticate.reset_password.message.success.auto_login=La tua password e' stata cambiata.
+playauthenticate.reset_password.message.success.manual_login=La tua password e' stata cambiata. Per favore ora connettiti utilizzando la tua nuova password.
+
+playauthenticate.change_password.error.passwords_not_same=Le passwords non corrispondono.
+playauthenticate.change_password.success=La password è stata modificata correttamente.
+
+playauthenticate.change_name.success=Il tuo nome utente e' stato modificato con successo.
+playauthenticate.change_name.temporary=Il nome che hai scelto è già esistente. Ne abbiamo impostato uno temporaneo.
+
+playauthenticate.password.signup.error.passwords_not_same=Le passwords non corrispondono.
+playauthenticate.password.login.unknown_user_or_pw=UNome utente o password non conosciute oppure l'utente e' online.
+
+playauthenticate.password.verify_signup.subject=Sketchness: Completa la tua registrazione
+playauthenticate.password.verify_email.subject=Sketchness: Conferma il tuo indirizzo mail
+playauthenticate.password.reset_email.subject=Sketchness: Come cambiare password
+
+# play-authenticate: Additional translations
+
+playauthenticate.login.email.placeholder=Il tuo indirizzo mail
+playauthenticate.login.password.placeholder=Scegli una password
+playauthenticate.login.password.repeat=Ripeti la password
+playauthenticate.login.title=Login
+playauthenticate.login.password.placeholder=Password
+playauthenticate.login.now=Collegati ora
+playauthenticate.login.forgot.password=Hai dimenticato la password?
+playauthenticate.login.oauth=oppure collegati utilizzando uno dei seguenti Provider:
+
+playauthenticate.signup.title=Registrati
+playauthenticate.signup.name=Il tuo nome
+playauthenticate.signup.now=Registrati ora
+playauthenticate.signup.oauth=oppure registrati utilizzando uno dei seguenti Provider:
+
+playauthenticate.verify.account.title=Verifica l'indirizzo mail
+playauthenticate.verify.account.before=prima di impostare una password devi
+playauthenticate.verify.account.first=verificare il tuo indirizzo
+
+playauthenticate.change.password.title=Cambia la tua password qui
+playauthenticate.change.password.cta=Cambia la mia password
+
+playauthenticate.change.name.title=Cambia il tuo nome qui
+playauthenticate.change.name.cta=Cambia il mio nome
+
+playauthenticate.merge.accounts.title=Collega gli account
+playauthenticate.merge.accounts.question=Vuoi collegare il tuo account?
+playauthenticate.merge.accounts.true=Si
+playauthenticate.merge.accounts.false=No
+playauthenticate.merge.accounts.ok=OK
+
+playauthenticate.link.account.title=Collega account
+playauthenticate.link.account.question=Vuoi collegare ({0}) con il tuo utente?
+playauthenticate.link.account.true=Si
+playauthenticate.link.account.false=No
+playauthenticate.link.account.ok=OK
+
+# play-authenticate: Signup folder translations
+
+playauthenticate.verify.email.title=Verifica la tua mail
+playauthenticate.verify.email.requirement1=Prima di poter usare Sketchness,
+playauthenticate.verify.email.requirement2=devi verificare il tuo indirizzo mail.
+playauthenticate.verify.email.cta1=Una mail e' stata inviata al tuo indirizzo.
+playauthenticate.verify.email.cta2=Per favore clicca sul link contenuto
+playauthenticate.verify.email.cta3=per completare la registrazione.
+
+playauthenticate.password.reset.title=Cambia password
+playauthenticate.password.reset.cta=Cambia la mia password
+
+playauthenticate.password.forgot.title=Password dimenticata
+playauthenticate.password.forgot.cta=Invia le istruzioni per modificarla
+
+playauthenticate.oauth.access.denied.title=Accesso autorizzato negato
+playauthenticate.oauth.access.denied.explanation=Se vuoi utilizzare Sketcheness tramite accesso autorizzato devi accettare la connessione.
+playauthenticate.oauth.access.denied.alternative=se preferisci non farlo puoi anche
+playauthenticate.oauth.access.denied.alternative.cta=registrarti con un nome utente e una password
+
+playauthenticate.token.error.title=Token errore
+playauthenticate.token.error.message=il token trasmesso e' scaduto o non esiste.
+
+playauthenticate.user.exists.title=Utente esistente
+playauthenticate.user.exists.message=Questo utente è già esistente.
+
+# play-authenticate: Navigation
+playauthenticate.navigation.profile=Profilo
+playauthenticate.navigation.link_more=Aggiungi Provider
+playauthenticate.navigation.logout=Logout
+playauthenticate.navigation.login=Log in
+playauthenticate.navigation.home=Home
+playauthenticate.navigation.restricted=area privata
+playauthenticate.navigation.signup=Registrati
+playauthenticate.navigation.lobby=Lobby
+playauthenticate.navigation.chatRoom=ChatRoom
+
+
+# play-authenticate: Handler
+playauthenticate.handler.loginfirst=Devi prima fare il login per poter vedere ''{0}''
+
+# play-authenticate: Profile
+playauthenticate.profile.title=Profilo utente
+playauthenticate.profile.mail=Il tuo nome e' {0} e il tuo indirizzo mail e' {1}!
+playauthenticate.profile.unverified=non verificato - clicca qui per verificarlo
+playauthenticate.profile.verified=verificato
+playauthenticate.profile.providers_many=Ci sono {0} provider connessi al tuo account:
+playauthenticate.profile.providers_one = C'e' un solo provider connesso al tuo account:
+playauthenticate.profile.logged=Sei attualmente connesso con:
+playauthenticate.profile.session=Il tuo User ID e' {0} e la tua sessione scadrà il {1}
+playauthenticate.profile.session_endless=Il tuo user ID e' {0} e la tua sessione non scadra' perche' e' infinita
+playauthenticate.profile.password_change=Cambia/imposta una password per il tuo account
+playauthenticate.profile.name_change=Cambia il nome utente del tuo account
+
+# play-authenticate - sample: Index page
+playauthenticate.index.title=Benvenuto in Sketchness
+playauthenticate.index.intro=Sketchness app
+playauthenticate.index.intro_2=This is a template for a simple application with authentication.
+playauthenticate.index.intro_3=Check the main navigation above for simple page examples including supported authentication features.
+playauthenticate.index.heading=Heading
+playauthenticate.index.details=View details
+
+# play-authenticate - sample: Restricted page
+playauthenticate.restricted.secrets=Secrets, everywhere!
+
+### --- play-authenticate END

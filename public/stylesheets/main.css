@@ -1,0 +1,934 @@
+html {
+    height: 100%;
+}
+
+html, body {
+    background-color: #eee;
+}
+
+/*To remove Twitter Bootstrap blue borders*/
+a:focus, a:active, 
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+select::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: 0;
+    outline : 0;
+}
+
+/*To remove blue borders around buttons*/
+button:focus {outline:0;}
+input:focus {outline:0;}
+
+.container > footer p {
+    text-align: center; /* center align it with the container */
+}
+.container {
+    width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+}
+
+.brand{
+	top:300;
+	left:400;
+}
+
+
+/* The white background content wrapper */
+.content {
+    background-color: #fff;
+    padding: 20px;
+	position: relative;
+    margin: 0 -90px; /* negative indent the amount of the padding to maintain the grid system */
+    margin-left: auto ;
+    margin-right: auto ;
+    min-height: 10px;
+}
+
+.homepage {
+	background-image:url('../images/UI/home.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	margin-left: auto ;
+    margin-right: auto ;
+	position: relative;
+	height: 600px;
+	width: 800px;
+}
+
+.lobbypage {
+	/*lobby*/
+	top:0px;left:0px;
+	width:800px;height:600px;background: url("../images/UI/lobby/lobby.png") no-repeat -0px -0px;
+	margin-left: auto ;
+    margin-right: auto ;
+	position: relative;
+	height: 600px;
+	width: 800px;
+}
+
+
+.leaderboardpage {
+	background-image:url('../images/UI/gameover.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	margin-left: auto ;
+    margin-right: auto ;
+	position: relative;
+	height: 600px;
+	width: 800px;
+}
+
+/* Page header tweaks */
+.page-header {
+    background-color: #f5f5f5;
+    padding: 20px 20px 10px;
+    margin: -20px -20px 20px;
+}
+
+/* Styles you shouldn't keep as they are for displaying this base example only */
+.content .span10,
+.content .span4 {
+    min-height: 500px;
+}
+
+/* Give a quick and non-cross-browser friendly divider */
+.content .span4 {
+    padding-left: 9px;
+    margin-left: 10px;
+}
+
+.topbar .btn {
+    border: 0;
+}
+
+.topbar p {
+    color: #888;
+}
+
+
+table.gameList {
+    display: table;
+    width: 100%;
+}
+table.gameList thead, table.gameList tbody {
+    float: left;
+    width: 100%;
+}
+table.gameList tbody {
+    overflow: auto;
+    height: 300px;
+}
+table.gameList tr {
+    width: 100%;
+    display: table;
+    text-align: left;
+}
+table.gameList th, table.gameList td {
+    width: 33%;
+}
+
+.popup_close {
+    float: right;
+	top: 20px;
+	cursor: pointer;
+	right: 20px;
+	color: #FFF;
+	border-radius: 30px;
+	background: #605F61;
+	font-size: 31px;
+	font-weight: bold;
+	display: inline-block;
+	line-height: 0px;
+	padding: 11px 3px;
+}
+
+
+
+#scoreBaloon{
+	/*scoreBaloon*/
+	width:74px;height:47px;background: url("../images/UI/game/game.png") no-repeat -182px -1245px;
+	left: 635px;
+	position: absolute;
+	top: 50px;
+	text-align: center;
+	z-index: 2;
+}
+
+#score{
+	left: 0px;
+	top: 8px;
+	position: relative;
+	z-index: 2;
+}
+
+
+#currentAvatar{
+	background-image: url("../images/UI/femaleAvatar.png");
+	width: 60px;
+	height: 60px;
+	top: 20px;
+	left: 700px;
+	position: absolute;
+}
+
+.opponentAvatar{
+	background-image: url("../images/UI/femaleAvatar.png");
+	background-size: 30px 30px;
+	width: 30px;
+	height: 30px;
+	top: 195px;
+	left: 610px;
+	position: absolute;
+	display: block;
+}
+
+#mainPage{
+	top:0px;left:0px;
+	width:800px;height:600px;background: url("../images/UI/game/game.png") no-repeat -0px -0px;
+	width:800px;
+	height:600px;
+	margin-left:auto;
+	margin-right:auto;
+	position: relative;
+}
+
+#username {
+	background-color: transparent;
+	border-color: transparent;
+	left:312px;
+	position:absolute;
+	top:460px;
+    width: 200px;
+	height:35px;
+	font-weight:bold;
+	color: #B01AA6;
+	text-align:center;
+}
+
+#facebook {
+	background-color: transparent;
+	background-image: url("../images/UI/facebook.png");
+	background-repeat:no-repeat;
+	background-position:center;
+	height:40px;
+	left:430px;
+	position:absolute;
+	top:535px;
+    width: 40px;
+}
+
+#twitter {
+	background-color: transparent;
+	background-image: url("../images/UI/twitterInactive.png");
+	background-repeat:no-repeat;
+	background-position:center;
+	height:40px;
+	left:480px;
+	position:absolute;
+	top:534px;
+    width: 40px;
+}
+
+
+#login {
+	background-color: transparent;
+	background-image: url("../images/UI/loginUnpressed.png");
+	height:66px;
+	left:330px;
+	position:absolute;
+	top:520px;
+	border-width: 0px;
+    width: 181px;
+}
+
+.dropdown-menu {
+    position: relative;
+    background-color: #C69;
+    margin: -70px 90px 0px;
+}
+
+#login:hover {
+	background-color: transparent;
+	background-image: url("../images/UI/loginHover.png");
+	height:66px;
+	left:330px;
+	position:absolute;
+	top:520px;
+    width: 181px;
+}
+
+#login:active {
+	background-color: transparent;
+	background-image: url("../images/UI/loginPressed.png");
+	height:46px;
+	left:330px;
+	position:absolute;
+	top:530px;
+    width: 181px;
+}
+
+#backToLobby {
+	/*backUnpressed*/
+	width:160px;height:51px;background: url("../images/UI/lobby/lobby.png") no-repeat -800px -51px;
+	left: 420px;
+	position: absolute;
+	border-width: 0px;
+	top: 530px;
+}
+
+#backToLobby:hover {
+	/*backHover*/
+	width:160px;height:51px;background: url("../images/UI/lobby/lobby.png") no-repeat -800px -0px;
+}
+
+#backToLobby:active {
+	/*backPressed*/
+	width:140px;height:39px;background: url("../images/UI/lobby/lobby.png") no-repeat -799px -762px;
+}
+
+#back {
+	/*backUnpressed*/
+	width:160px;height:51px;background: url("../images/UI/lobby/lobby.png") no-repeat -800px -51px;
+	left: 600px;
+	position: absolute;
+	border-width: 0px;
+	top: 530px;
+}
+
+#back:hover {
+	/*backHover*/
+	width:160px;height:51px;background: url("../images/UI/lobby/lobby.png") no-repeat -800px -0px;
+}
+
+#back:active {
+	/*backPressed*/
+	width:140px;height:39px;background: url("../images/UI/lobby/lobby.png") no-repeat -799px -762px;
+}
+
+
+#tolobby {
+	top:530px;left:600px;
+	width:189px;height:50px;background: url("../images/UI/lobby/lobby.png") no-repeat -773px -805px;
+	position: absolute;
+	border-width: 0px;
+}
+
+#tolobby:hover {
+	width:190px;height:50px;background: url("../images/UI/lobby/lobby.png") no-repeat -655px -600px;
+}
+
+#tolobby:active {
+	width:157px;height:42px;background: url("../images/UI/lobby/lobby.png") no-repeat -605px -805px;
+}
+
+#tolobbyprofile {
+	top:500px;left:530px;
+	width:189px;height:50px;background: url("../images/UI/lobby/lobby.png") no-repeat -773px -805px;
+	position: absolute;
+	border-width: 0px;
+}
+
+#tolobbyprofile:hover {
+	width:190px;height:50px;background: url("../images/UI/lobby/lobby.png") no-repeat -655px -600px;
+}
+
+#tolobbyprofile:active {
+	width:157px;height:42px;background: url("../images/UI/lobby/lobby.png") no-repeat -605px -805px;
+}
+
+#name {
+	position: relative;
+	top: 7px;
+	left: 120px;
+	font-weight:bold;
+	font-size: 20px;
+}
+
+#points {
+	position: relative;
+	top: -19px;
+	left: 400px;
+	display: flex;
+	font-size: 20px;
+	font-weight:bold;
+}
+
+#leaderboardAvatar {
+	background-image: url("../images/UI/femaleAvatar.png");
+	width: 60px;
+	height: 60px;
+	top: 15px;
+	left: 10px;
+	position: relative;
+	display: inline-block;
+}
+
+
+#scoresArea {
+	position: relative;
+	top: 100px;
+	left: 100px;
+}
+
+.score {
+	height: 96px;
+	width: 509px;
+	background-color: transparent;
+	background-image: url("../images/UI/score.png");
+}
+
+#createGame {
+	/*createUnpressed*/
+	top:0px;left:0px;
+	width:199px;height:60px;background: url("../images/UI/lobby/lobby.png") no-repeat -574px -847px;
+	height: 60px;
+	left: 10px;
+	position: absolute;
+	border-width: 0px;
+	top: 540px;
+	width: 200px;
+}
+
+#createGame:hover {
+	/*createHover*/
+	width:199px;height:60px;background: url("../images/UI/lobby/lobby.png") no-repeat -574px -907px;
+}
+
+#createGame:active {
+	/*createPressed*/
+	width:184px;height:51px;background: url("../images/UI/lobby/lobby.png") no-repeat -773px -855px;
+}
+
+
+#singlePlayer {
+	/*singleUnpressed*/
+	top:0px;left:0px;
+	width:261px;height:82px;background: url("../images/UI/lobby/lobby.png") no-repeat -344px -765px;
+	height: 80px;
+	left: 540px;
+	position: absolute;
+	border-width: 0px;
+	top: 0px;
+	width: 260px;
+}
+
+#singlePlayer:hover {
+	/*singleHover*/
+	width:261px;height:82px;background: url("../images/UI/lobby/lobby.png") no-repeat -344px -683px;
+}
+
+#singlePlayer:active {
+	/*singlePressed*/
+	width:230px;height:82px;background: url("../images/UI/lobby/lobby.png") no-repeat -344px -847px;
+	left: 570px;
+}
+
+#createGamePopUp {
+	/*createUnpressed*/
+	top:0px;left:0px;
+	width:199px;height:60px;background: url("../images/UI/lobby/lobby.png") no-repeat -574px -847px;
+	height: 60px;
+	left: 0px;
+	position: relative;
+	border-width: 0px;
+	top: 30px;
+	width: 200px;
+}
+
+#roomName{
+	width: 200px;
+}
+
+#createGamePopUp:hover {
+	/*createHover*/
+	width:199px;height:60px;background: url("../images/UI/lobby/lobby.png") no-repeat -574px -907px;
+}
+
+#createGamePopUp:active {
+	/*createPressed*/
+	width:184px;height:51px;background: url("../images/UI/lobby/lobby.png") no-repeat -773px -855px;
+}
+
+
+#endSegmentation {
+	width:182px;height:69px;background: url("../images/UI/game/game.png") no-repeat -0px -1329px;
+	left:230px;
+	position:absolute;
+	border-width: 0px;
+	top:500px;
+}
+
+#endSegmentation:hover {
+	/*endHover*/
+	width:182px;height:69px;background: url("../images/UI/game/game.png") no-repeat -0px -1200px;
+}
+
+#endSegmentation:active {
+	/*endPressed*/
+	width:182px;height:60px;background: url("../images/UI/game/game.png") no-repeat -0px -1269px;
+}
+
+#skipTask {
+	/*skipUnpressed*/
+	width:126px;height:51px;background: url("../images/UI/game/game.png") no-repeat -126px -1398px;
+	height: 66px;
+	left: 30px;
+	position: absolute;
+	border-width: 0px;
+	top: 480px;
+	width: 140px;
+}
+
+#skipTask:hover {
+	/*skipHover*/
+	width:126px;height:51px;background: url("../images/UI/game/game.png") no-repeat -0px -1398px;
+}
+
+#skipTask:active {
+	/*skipPressed*/
+	width:116px;height:45px;background: url("../images/UI/game/game.png") no-repeat -182px -1200px;
+}
+
+#join {
+	/*joinUnpressed*/
+	top:0px;left:0px;
+	width:194px;height:61px;background: url("../images/UI/lobby/lobby.png") no-repeat -605px -683px;
+	height: 66px;
+	left: 10px;
+	position: absolute;
+	border-width: 0px;
+	top: 480px;
+	width: 190px;
+}
+
+#join:hover {
+	/*joinHover*/
+	width:194px;height:61px;background: url("../images/UI/lobby/lobby.png") no-repeat -605px -744px;
+	border-width: 0px;
+}
+
+#join:active {
+	/*joinPressed*/
+	width:192px;height:49px;background: url("../images/UI/lobby/lobby.png") no-repeat -344px -929px;
+	border-width: 0px;
+}
+
+
+
+#username:focus {
+box-shadow:-2px -2px 6px #B01AA6, -2px 2px 6px #B01AA6, 4px 2px 6px #B01AA6, 4px -2px 6px #B01AA6;
+}
+
+#chatPanel {
+    overflow: hidden;
+	position: absolute;
+	z-index:10;
+	margin-left:0px;
+	padding-left: 0px;
+}
+
+#warnTag {
+	height: 200px !important;
+	width: 200px !important;
+	position: relative;
+	top: -170px;
+	left: 590px;
+	top:1px;left:3px;
+	width:344px;height:342px;background: url("../images/UI/lobby/lobby.png") no-repeat -0px -600px;
+	z-index: 900;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+div.popup_cont {
+	height:350px !important;
+	width:350px !important;
+	position: fixed;
+	top: 25% !important;
+	left: 40% !important;
+	width:344px;height:342px;background: url("../images/UI/lobby/lobby.png") no-repeat -0px -600px;
+}
+
+
+
+.popup_cont .popup{
+	background: rgba(0,0,0,0);
+	padding: 25px;
+	top: 50px;
+	left: 50px;
+	box-shadow: 0 3px 10px rgba(0,0,0,0);
+	position: absolute;
+}
+
+.popup_content{
+	position: absolute;
+	height:200px !important;
+	width:200px !important;
+}
+
+.lobbyChat {
+	height:490px;
+	left:340px;
+	min-height:160px;
+	top:150px;
+	width:280px;
+}
+
+.gameChat {
+	height:290px;
+	left:600px;
+	min-height:160px;
+	top:260px;
+	width:180px;
+}
+
+.gameRoom {
+	left:628px;
+}
+
+tr.highlight {
+	background-color: #8888ff;
+}
+
+tr:hover { background-color: #8888ff }
+
+#gameList{
+	position: absolute;
+	width: 260px;
+	top: 130px;
+	left: 30px;
+	height: 340px;
+}
+
+div.avatarIcon {
+	list-style-type: none;
+	background: url('../images/favicon.png') no-repeat top left;
+	background-size:40px 40px;
+	height: 46px;
+	width: 120px;
+	word-wrap: break-word;
+	padding-left: 40px;
+	padding-top: 10px;
+	color: black;
+	font-weight:bold;
+}
+
+.userList {
+	position: absolute;
+	height:290px;
+	left:620px;
+	min-height:160px;
+	top:140px;
+	width:180px;
+}
+
+#onError, #onChat {
+    display: none;
+}
+
+#error {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  text-align: center;
+  padding-top: 10%;
+}
+
+.error {
+  padding: 1px 8px;
+  background-color: #f00;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  border-radius: 8px;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+#viewport {
+    width: 500px;
+    height: 450px;
+	top: -439.5px;
+	left: 89.5px;
+    position: relative;
+}
+
+#gameMessagesSpan {
+    width: 500px;
+    height: 50px;
+    left: 89.5px;
+    background: white;
+    position: relative;
+}
+
+#positions {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  z-index: 5;
+}
+
+#me {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  z-index: 4;
+}
+
+#draws {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  z-index: 3;
+}
+
+#task {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  z-index: 2;
+}
+
+#canvaswindows{
+  position: absolute;
+  top: 580px;
+  width: 420px;
+  height: 350px;
+}
+
+#currentNickname{
+	width: 110px;
+	height: 30px;
+	left:680px;
+	position:absolute;
+	top:88px;
+	text-align:center;
+	font-size:15px;
+	font-weight:bold;
+}
+
+#topMessage{
+	width: 380px;
+	height: 30px;
+	left:108px;
+	position:absolute;
+	top:50px;
+	text-align:center;
+}
+
+#canvasMessage{
+	width: 380px;
+	height: 30px;
+	left:108px;
+	position:absolute;
+	top:350px;
+	text-align:center;
+	z-index:900;
+}
+
+#warnPre{
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-size: 20px;
+	line-height: 1.428571429;
+	color: #333;
+	word-break: break-word;
+	word-wrap: break-word;
+	background-color: rgba(0, 0, 0, 0);
+	border: 0px solid rgba(0, 0, 0, 0);
+	border-radius: 4px;
+	width: 150px;
+	height: 100px;
+	top: 20px;
+	left: 40px;
+	position: relative;
+}
+
+#canvasPre{
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-size: 20px;
+	line-height: 1.428571429;
+	color: #333;
+	word-break: break-word;
+	word-wrap: break-word;
+	background-color: rgba(0, 0, 0, 0);
+	border: 0px solid rgba(0, 0, 0, 0);
+	border-radius: 4px;
+	width: 300px;
+	height: 100px;
+	left: 40px;
+	position: relative;
+}
+
+#timeCounter{
+	width: 200px;
+	height: 30px;
+	left:-10px;
+	position:absolute;
+	top:550px;
+	text-align:center;
+}
+
+
+#hudArea{
+	position: absolute;
+    left: 0;
+	top: 0;
+	width: 800px;
+	height:300px;
+}
+
+#hud{
+	width: 800px;
+	height:300px;
+	z-index: 1;
+}
+
+
+#gameArea {
+    width: 580px;
+}
+
+.playername {
+    position: absolute;
+    right: 20px;
+    z-index: 20;
+}
+
+#wrapper {
+    margin: 0px 20px;
+}
+
+#main {
+    margin: 20px auto;
+    width: 500px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.lobbyMessages{
+	height: 330px!important;
+}
+
+#unorderedUserList{
+	height: 330px!important;
+	width: 150px!important;
+	position: absolute;
+	left: 30px;
+}
+
+#messages {
+    position: absolute;
+	height: 265px;
+	top:10px;
+	overflow-y: scroll;
+}
+
+#talk {
+    position: absolute;
+	background-color:transparent;
+	border-color:transparent;
+	z-index:11;
+	height:30px;
+	resize: none;
+}
+
+.lobbyTalk {
+	left: 345px;
+	width: 250px;
+	top: 508px;
+}
+
+.gameTalk {
+	left: 605px;
+    width: 170px;
+	top:545px;
+}
+
+
+.message {
+    padding: 4px 0;
+    position: relative;
+}
+
+.message span {
+    width: 90px;
+    overflow: hidden;
+    text-align: right;
+    font-weight: bold;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: -1px;
+}
+
+.message p {
+    display: inline-block;
+    margin: 0;
+    width: 150px;
+word-wrap: break-word;
+}
+
+
+.message.talkError p{
+	color: #FF0000;
+	font-weight: bold;
+}
+
+.message.talkWarning p{
+	color: #FE9A2E;
+	font-weight: bold;
+}
+
+.message.talkNear p{
+	color:#9FF781;
+	font-weight: bold;
+}
+
+div#preloaded-images {
+   position: absolute;
+   overflow: hidden;
+   left: -9999px;
+   top: -9999px;
+   height: 1px;
+   width: 1px;
+}
+
+
+#mainPage.sketcher {
+	top:0px;left:0px;
+	width:800px;height:600px;background: url("../images/UI/game/game.png") no-repeat -0px -600px;
+}
+
+#mainPage.guesser {
+	/*guesser*/
+	top:0px;left:0px;
+	width:800px;height:600px;background: url("../images/UI/game/game.png") no-repeat -0px -0px;
+}
+
+
+/* Styles specific to this particular page */
+.jscroll,
+.scroll-pane-arrows
+{
+	width: 100%;
+	height: 200px;
+	overflow: auto;
+}
+.horizontal-only
+{
+	height: auto;
+	max-height: 200px;
+}

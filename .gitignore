@@ -1,0 +1,52 @@
+# Default play .gitignore
+logs
+project/project
+project/target
+target
+tmp
+.history
+dist
+/.idea
+/*.iml
+/out
+/.idea_modules
+/.classpath
+/.project
+/RUNNING_PID
+/.settings
+
+# Ignore all dotfiles except for .gitignore
+.*
+!.gitignore
+
+# Resources handled outside the vcs
+/lib
+/assets
+/public/taskImages
+/public/images
+/public/javascripts/lib
+/public/stylesheets/lib
+
+# Results of the execution
+/results
+
+# Netbean files
+/build.xml
+/nbproject
+
+# Probable path to ide side effect build
+/bin
+/build
+/.target
+
+# Known binary file extensions
+*.class
+*.jar
+*.zip
+*.psd
+*.jpg
+*.png
+
+*.db
+
+*.db

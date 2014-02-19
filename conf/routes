@@ -1,0 +1,118 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET      /                                 controllers.Sketchness.index()
+#GET     /lobby                            controllers.Sketchness.lobby(username: String ?= null)
+#GET     /room                             controllers.Sketchness.chatRoom(username: String ?= null, room: String ?= "default", nPlayers: Integer ?= 3)
+#GET     /room/chatStream                  controllers.Sketchness.chatStream(username: String ?= null,room: String ?= "default")
+#GET     /room/lobbyStream                 controllers.Sketchness.lobbyStream(username: String ?= null)
+#GET     /room/paintStream                 controllers.Sketchness.paintStream(username: String ?= null,room: String ?= "default")
+GET     /leaderboard                      controllers.Sketchness.leaderboard(username: String ?= null, result: String ?= null)
+
+#new routes
+GET     /lobby                            controllers.Sketchness.lobby
+#GET     /room                             controllers.Sketchness.chatRoom(room: String ?= "default", nPlayers: Integer ?= 3)
+GET     /room/chatStream                  controllers.Sketchness.chatStream(room: String ?= "default")
+GET     /room/paintStream                 controllers.Sketchness.paintStream(room: String ?= "default")
+GET     /room/lobbyStream                 controllers.Sketchness.lobbyStream
+
+POST     /room                             controllers.Sketchness.chatRoom
+
+GET		/renderer						  controllers.Utilities.renderer(imageID: String)
+GET		/rendererStream					  controllers.Utilities.rendererStream(imageID: String)
+GET 	/retrieveMask					  controllers.Utilities.retrieveMask(imageID: String, tag: String)
+GET 	/retrieveImages					  controllers.Utilities.retrieveImages()
+GET 	/retrieveTags					  controllers.Utilities.retrieveTags(imageID: String)
+
+
+
+GET		/admin					          controllers.Utilities.newRendererCall
+GET     /WebToolAjax                      controllers.Utilities.webToolAjaxCall
+GET     /LoadStats                        controllers.Utilities.loadStatsCall
+GET     /WebInfoAjax                      controllers.Utilities.webInfoAjaxCall
+GET     /WebTaskAjax                      controllers.Utilities.webTaskAjaxCall
+GET     /CloseTask                        controllers.Utilities.closeTaskCall
+GET     /AddTask                          controllers.Utilities.addTaskCall
+GET     /AddUTask                         controllers.Utilities.addUTaskCall
+GET     /TaskSelection                    controllers.Utilities.taskSelectionCall
+GET     /loadFirst                        controllers.Utilities.loadFirstGraphCall
+GET     /loadSecond                       controllers.Utilities.loadSecondGraphCall
+GET     /downloadStats1                   controllers.Utilities.downloadStats1Call
+GET     /downloadStats2                   controllers.Utilities.downloadStats2Call
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+#Retrieving internazionalization messages
+GET /i18n controllers.JavascriptController.i18n()
+
+# Javascript routing
+GET    /javascripts/routes      controllers.JavascriptController.javascriptRoutes()
+
+
+
+
+
+################################################
+##########Play Authenticate Routes############
+################################################
+
+
+
+GET     /login                 controllers.Login.login
+POST    /login                 controllers.Login.doLogin
+
+GET     /signup                controllers.Signup.signup
+POST    /signup                controllers.Signup.doSignup
+GET     /signupGuest           controllers.Signup.doSignupGuest
+
+GET     /sket                           controllers.Application.index
+GET     /restricted                 controllers.Application.restricted
+GET     /assets/javascripts/routes.js    controllers.Application.jsRoutes
+
+GET     /profile                    controllers.Application.profile
+
+GET     /login                      controllers.Application.login
+POST    /login                      controllers.Application.doLogin
+
+#GET     /logout                     com.feth.play.module.pa.controllers.Authenticate.logout
+GET     /logout                     controllers.Application.doLogout
+GET     /authenticate/:provider     com.feth.play.module.pa.controllers.Authenticate.authenticate(provider: String)
+
+GET     /signup                     controllers.Application.signup
+POST    /signup                     controllers.Application.doSignup
+
+GET     /accounts/unverified        controllers.Signup.unverified
+GET     /authenticate/:provider/denied     controllers.Signup.oAuthDenied(provider: String)
+
+GET     /accounts/verify/:token     controllers.Signup.verify(token: String)
+GET     /accounts/exists            controllers.Signup.exists
+GET     /provider/exists            controllers.Signup.existsMail
+
+GET     /accounts/password/reset/:token     controllers.Signup.resetPassword(token: String)
+POST    /accounts/password/reset            controllers.Signup.doResetPassword
+
+GET     /accounts/password/change    controllers.Account.changePassword
+POST    /accounts/password/change    controllers.Account.doChangePassword
+
+GET     /accounts/name/change    controllers.Account.changeNickname
+POST    /accounts/name/change    controllers.Account.doChangeNickname
+
+GET     /accounts/verify            controllers.Account.verifyEmail
+
+GET     /accounts/add               controllers.Account.link
+
+GET     /accounts/link              controllers.Account.askLink
+POST    /accounts/link              controllers.Account.doLink
+
+GET     /accounts/merge             controllers.Account.askMerge
+POST    /accounts/merge             controllers.Account.doMerge
+
+GET     /login/password/forgot     controllers.Signup.forgotPassword(email: String ?= "")
+POST    /login/password/forgot     controllers.Signup.doForgotPassword
+
+GET     /checkOnline               controllers.Sketchness.checkOnline
+GET     /keepOnline                controllers.Sketchness.keepOnline
+GET     /putOffline                controllers.Sketchness.putOffline

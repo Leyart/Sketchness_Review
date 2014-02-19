@@ -1,0 +1,21 @@
+
+@main2(Messages("playauthenticate.verify.account.title")) {
+
+
+
+<script>
+    window.onload=function(){
+    document.getElementById("ProfileImage").src="../../../assets/images/registration/nation.png";
+
+    };
+</script>
+
+    <div id="unverified-scroll">
+        <h1 style="padding-top:40px;padding-left:50px;">@Messages("playauthenticate.verify.account.title")</h1>
+        <p style="padding-top:20px;padding-left:89px;">
+        @Messages("playauthenticate.verify.account.before")<br/> <a href="@routes.Account.verifyEmail">@Messages("playauthenticate.verify.account.first")</a>.<br/>
+        </p>
+    </div>
+	
+	<a href="@routes.Sketchness.lobby()"><button type="submit" id="tolobby"></button></a>
+}

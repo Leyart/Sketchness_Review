@@ -1,0 +1,14 @@
+@(username: String, result: String)
+
+@main(username,null) {
+
+	<div class="leaderboardpage">
+            <div id="scoresArea">
+                @if(flash.containsKey("score1")){<div id="score1" class="score"><div id="leaderboardAvatar"></div><span id="name">@flash.get("name1")</span><span id="points">@flash.get("points1") points</span></div>}
+                @if(flash.containsKey("score2")){<div id="score2" class="score"><div id="leaderboardAvatar"></div><span id="name">@flash.get("name2")</span><span id="points">@flash.get("points2") points</span></div>}
+                @if(flash.containsKey("score3")){<div id="score3" class="score"><div id="leaderboardAvatar"></div><span id="name">@flash.get("name3")</span><span id="points">@flash.get("points3") points</span></div>}
+                @if(flash.containsKey("score4")){<div id="score4" class="score"><div id="leaderboardAvatar"></div><span id="name">@flash.get("name4")</span><span id="points">@flash.get("points4") points</span></div>}
+            </div>
+            <a href="@routes.Sketchness.lobby()"><button type="submit" id="tolobby"></button></a>
+        </div>  
+}

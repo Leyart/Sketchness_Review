@@ -1,0 +1,62 @@
+@(loginForm: Form[_])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main2(Messages("Login")) {
+
+<div class="backgroundimage-login">
+    @helper.form(routes.Login.doLogin, 'id -> "myLoginForm") {
+
+    @if(loginForm.hasGlobalErrors) {
+
+    <p class="error">
+        <span class="label label-important">@loginForm.globalError.message</span>
+    </p>
+    }
+    <div id="login-form">
+        <div id="username-container-login" class="div-input-username-login">
+            @inputText(
+            loginForm("email"),
+            '_id -> "email-input",
+            'placeholder -> "E-mail"
+            )
+        </div>
+
+        <div id="password-container-login" class="div-input-password-login">
+            @inputPassword(
+            loginForm("password"),
+            '_showConstraints -> false,
+            'placeholder -> "Password"
+            )
+        </div>
+    </div>
+    <input type="submit" id="submit-login" class="login-submit" value="">
+
+    <div id="provider-container" class="provider-container">
+        @* Display list of available providers *@
+        @_providerPartial(skipCurrent=false)
+    </div>
+
+    <a id="play-as-guest-container" class="play-as-guest-container" href="@routes.Signup.doSignupGuest()">
+    </a>
+
+    <a id="register" class="register-container" href="@routes.Signup.signup()">
+    </a>
+    
+    <div id="facebookLike">
+            <iframe src="//www.facebook.com/plugins/follow.php?href=https%3A%2F%2Fwww.facebook.com%2FCUbRIKproject&amp;layout=standard&amp;show_faces=false&amp;colorscheme=light&amp;font=tahoma" mce_src="http://www.facebook.com/plugins/follow.php?href=https%3A%2F%2Fwww.facebook.com%2FCUbRIKproject&amp;layout=standard&amp;show_faces=false&amp;colorscheme=light&amp;font=tahoma" style="border:none; overflow:hidden; width:250px;" allowtransparency="true" frameborder="0" scrolling="no">
+            </iframe>
+    </div>
+    <div id="twitterFollow">
+        <a href="https://twitter.com/cubrikproject" class="twitter-follow-button" data-show-count="false" data-size="large">Follow cubrikproject</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
+    }
+
+
+
+
+</div>
+
+}

@@ -1,0 +1,93 @@
+@(localUser: models.User = null)
+
+
+@main(Messages("playauthenticate.navigation.lobby"), "lobby") {
+	<!--TODO: BETTER INTERFACE FOR THE ERRORS, POSSIBLY AN OVERLAY-->
+	<!--  <div id="onError" class="alert-message error">
+		<p>
+			<strong>Oops! </strong><span></span>
+		</p>
+	</div> -->
+        <div id="currentNickname">@localUser.name</div>
+	<div class="lobbypage">
+
+
+        <div id="ProfileContenitor" class="btn-group">
+            <div id="ProfileImage"/>
+            <a id="ProfileLink" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-user"></i> @localUser.name
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="@routes.Application.profile()">@Messages("playauthenticate.navigation.profile")</a></li>
+				<!--Profile linking disabled in this version-->
+                <!--<li><a href="@routes.Account.link()">@Messages("playauthenticate.navigation.link_more")</a></li>-->
+                <li class="divider"></li>
+                <li><a href="@routes.Application.doLogout"><i class="icon-off"></i> @Messages("playauthenticate.navigation.logout")</a></li>
+            </ul>
+
+        </div>
+
+
+            <div id="chatPanel" class="span4 lobbyChat">
+			<div id="messages" class="jscroll scroll-pane-arrows jspScrollable lobbyMessages">
+			</div>
+            </div>
+            <textarea id="talk" class="lobbyTalk"></textarea>
+            <div class="userList">
+                <div id="unorderedUserList" class="jscroll scroll-pane-arrows jspScrollable">
+                </div>
+            </div>
+        
+            <table class="gameList" id="gameList">
+                <thead>
+                    <tr class="head">
+                        <th>Title</th>
+                        <th>Players</th>
+                    </tr>
+                </thead>
+                <tbody id="gameListBody" class="jscroll scroll-pane-arrows jspScrollable">
+                </tbody>
+            </table> 
+            <form id="joinGame" method="POST" action="@routes.Sketchness.chatRoom()">
+                      <!--      <input id="username" name="username" class="input-small" type="hidden" value="@localUser.name" />       -->
+                            <input id="roomId" name="room" class="input-small" type="hidden" value="" />
+                            <button id="join" type="submit"></button>
+            </form>
+            <!-- <form id="backForm" action="@routes.Sketchness.index()">       -->
+                <a href="@routes.Application.doLogout"> <button type="submit" id="back"></button>        </a>
+         <!--   </form>                      -->
+            
+            <form id="createGameForm" href="#createGamePopUp" class="default_popup ignore-hash">
+                <button type="submit" id="createGame"></button>
+            </form>
+            
+            <div id="createGamePopUp" class="alertBox" style="display:none">
+                <form  method="POST" action="@routes.Sketchness.chatRoom()">
+                    <p style="text-align:center"><strong>Room Name</strong></p>
+               <!--     <input id="username" name="username" class="input-small" type="hidden" value="@localUser.name" />       -->
+                    <input id="roomName" name="room" class="input-small" type="text" />
+                    <p></p>
+                    <p style="text-align:center"><strong>Number of Players</strong></p>
+                    <input type="number" name="nPlayers" min="2" max="4" step="1" value="3">
+                    <button id="createGamePopUp" type="submit"></button>
+                </form>
+            </div>
+
+
+            
+            <form  id="singlePlayerForm" method="POST" action="@routes.Sketchness.chatRoom()">
+               <!--     <input id="username" name="username" class="input-small" type="hidden" value="@localUser.name" />       -->
+                    <input id="roomName" name="room" class="input-small" type="hidden" value="@localUser.name"/>
+                    <input type="hidden" name="nPlayers" value="1">
+                    <button id="singlePlayer" type="submit"></button>
+            </form>
+
+        <!--The only way to refer to websocket instances in the page-->
+        <div id="chatWebSocket" data-ws="@routes.Sketchness.chatStream("lobby").webSocketURL()"></div>
+        <div id="lobbyWebSocket" data-ws="@routes.Sketchness.lobbyStream().webSocketURL()"></div>
+        <!--Logic to handle the chat and the lobby-->
+	<script type="text/javascript" src="/assets/javascripts/chat.js"></script>
+	<script type="text/javascript" src="/assets/javascripts/lobby.js"></script>
+    </div>
+}

@@ -1,0 +1,175 @@
+
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Sketchness Stats</title>
+       
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/renderer/style.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/renderer/dropkick.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/renderer/blank_theme.css")">
+
+    </head>
+    <body class="cf">
+        <div class="header span12">
+            <a class="logo" href=".">Sketchness<span>Panel</span></a>
+        </div>
+        <input type="text" id="ImgAttivattiva" style="display:none;"/>
+        <input type="text" id="TaskAttivo" style="display:none;"/>
+        <input type="text" id="mediaLocator" style="display:none;"/>
+        <input type="text" id="ImgPreview" style="display:none;"/>
+
+        <div id="container" class="container cf" >
+            <div class="panelContainer">
+                <div class="panel latosinistro span5">
+                    <div class="panelTitle">Images</div>
+                    <div class="span6">
+                        <div class="intestazione">
+                            <select id="selection" class="customSelect" name="selection">
+                            </select>
+                        </div>
+                        <span id="tag"></span>
+                        <div class="list" style="display:none">
+                            <div class="listHeader">Image Tags</div>
+                            <div class="tag listBody"></div>
+                        </div>
+                    </div>
+                    <div class="col span6">
+                        <div class="contenuto">
+                            <div class="scritte">
+                                <div id="dati" class="left" style="display:none">
+                                    <select id="creanuovotask" name="creanuovotask" class="customSelect" onchange="nuovoTask()">
+                                        <option selected disabled value=''>Create new task</option>
+                                        <option>segmentation</option>
+                                        <option>tagging</option>
+                                    </select>
+                                    <table class="infoTable">
+                                        <tr><td class="infoLabel">Id:</td><td class="infoValue" id="imageId"></td></tr>
+                                        <tr><td class="infoLabel">Width:</td><td class="infoValue" id="imageWidth"></td></tr>
+                                        <tr><td class="infoLabel">Height:</td><td class="infoValue" id="imageHeight"></td></tr>
+                                        <tr><td class="infoLabel">Annotations:</td><td class="infoValue" id="imageAnnotations"></td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel latodestro span4 col">
+                    <div class="panelTitle">Tasks</div>
+                    <div class="intestazione">
+                        <span class="left">
+                            <select id="selectionTask" class="customSelect" name="selectionTask" onchange="visualizzaUTask();">
+                            </select>
+                        </span>
+                    </div>
+                    <div class="contenuto">
+                        <div class="areaTask">
+                            <div id="risultatitask" style="display:none">
+                                <div class="statsTable">
+                                    <table id="uTaskContainer">
+                                        <tr> 
+                                            <td>ID</td>
+                                            <td>Task Type</td>
+                                            <td>Status</td>
+                                        </tr>
+                                    </table>
+                                    <span id="noMicrotaskLabel" style="display:none">No microtask available</span>
+                                </div>
+                                <select id="creanuovoUTask" name="creanuovoUTask" class="customSelect" onchange="nuovoUTask()">
+                                    <option selected disabled value='label'>Create new microtask</option>
+                                    <option>segmentation</option>
+                                    <option>tagging</option>
+                                </select>
+                                <span id="closedTaskLabel"  style='display:none'>Closed task</span>
+                                <button type='submit' id='closeTaskButton' onclick='chiudiTask()' style='display:none'>Close this task</button>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="panel areaStatistiche span3 col">
+                    <div class="panelTitle">System Info</div>
+                    <table id="statisticheSistema" style="display:block" class="infoTable">
+                        <tr><td class="infoLabel">Images: </td><td class="infoValue" id="numeroFoto"></td></tr>
+                        <tr><td class="infoLabel">Tag avg. per Image: </td><td class="infoValue" id="mediaTagFoto"></td></tr>
+                        <tr><td class="infoLabel">Annotations: </td><td class="infoValue" id="numeroSegmenti"></td></tr>
+                        <tr><td class="infoLabel">Annotation avg. per image: </td><td class="infoValue" id="mediaSegmenti"></td></tr>
+                        <tr><td class="infoLabel">Number of users: </td><td class="infoValue" id="numberUsers"></td></tr>
+                    </table>
+                    <button type="submit" onclick="caricaStatistiche()" title="Update Stats" id="updateStatistics">Update Stats</button>
+                    <button type="submit" onclick="download1()" title="Download" id="download1">User data</button>
+                    <button type="submit" onclick="download2()" title="Download" id="download2">Image data</button>
+                    <button type="submit" onclick="downloadgraph1()" title="Download" id="downloadgraph1">First Graph Data</button>
+                    <button type="submit" onclick="downloadgraph2()" title="Download" id="downLladgraph2">Second Graph Data</button>
+                    <button type="submit" onclick="displayGraphs()" title="Download" id="displayGraph">Display Graphs</button>
+                </div>
+            </div>
+
+            <div class="immagini span12">
+                <div id="img" class="left">
+                    <img id="immagine" style="max-height:100%; max-width:100%" />
+                </div>
+            </div>
+
+            <hr class="separator"></hr>
+            <div id="drawArea" class="span12">
+
+                <div id="chart_div1"></div>
+                <div id="chart_div2"></div>
+
+                <div id="viewport">
+				<span id="canvaswindows">
+					<canvas id="draws" width="420" height="350" style="position:absolute;z-index:3;"></canvas>
+					<!-- CANVAS USED TO SHOW THE IMAGE-->
+					<canvas id="task" width="420" height="350"></canvas>
+				</span>
+                <span id="canvasmask">
+					<canvas id="mask" width="420" height="350" style="position:absolute;z-index:3;"></canvas>
+				</span>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </body>
+    <script src="@routes.Application.jsRoutes" defer="defer"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/jquery/jquery-1.10.2.min.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/loadMask.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/jquery/jquery.dropkick-min.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/jquery/jAjax.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/visualizzaImg.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/popolaSelectionAjax.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/visualizzaImgAjax.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/popolaTask.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/visualizzaUTask.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/nuovoTask.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/nuovoUTask.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/caricaStatistiche.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/chiudiTask.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/loadFirstGraph.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/loadSecondGraph.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/FileSaver.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/download.js")"></script>
+    <script src="@routes.Assets.at("javascripts/renderer/imgPreview.js")"></script>
+    <script src="https://www.google.com/jsapi"></script>
+    <script>
+        google.load('visualization', '1', {'packages':['corechart']});
+    </script>
+    <script>
+        window.onload = function(){
+            caricaStatistiche();
+            var loadedImage = $("#immagine");
+            loadedImage.load(function(evt){
+                $("#imageWidth").text(loadedImage[0].naturalWidth + "px");
+                $("#imageHeight").text(loadedImage[0].naturalHeight + "px");
+            });
+        };
+    </script>
+</html>

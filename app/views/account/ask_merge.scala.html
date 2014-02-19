@@ -1,0 +1,40 @@
+@(acceptForm: Form[Account.Accept], aUser: com.feth.play.module.pa.user.AuthUser, bUser: com.feth.play.module.pa.user.AuthUser)
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@label = {
+	@Messages("playauthenticate.merge.accounts.question",aUser,bUser)
+}
+
+@main2(Messages("playauthenticate.merge.accounts.title")) {
+    <div id="text-contenitor-content">
+        <!--    <h1 style="padding-top:20px;padding-left:75px">@Messages("playauthenticate.link.account.title")>@Messages("playauthenticate.merge.accounts.title")</h1> -->
+        <p>
+        <form action="@routes.Account.doMerge" method="POST" style="padding-top:50px;padding-left:80px">
+                @if(acceptForm.hasGlobalErrors) {
+                    <p class="error">
+                        <span class="label label-important">@acceptForm.globalError.message</span>
+                    </p>
+                }
+
+           @inputRadioGroup(
+                acceptForm("accept"),
+                options = Seq(
+                    "true"-> Messages("playauthenticate.merge.accounts.true"),
+                    "false"->Messages("playauthenticate.merge.accounts.false")
+                ),
+                '_label -> label,
+                '_showConstraints -> false
+            )
+
+            <input type="submit" value="@Messages("playauthenticate.merge.accounts.ok")" class="btn btn-primary">
+        </form>
+        </p>
+    </div>
+
+
+    <div id="preloaded-images">
+        <img src="../assets/images/UI/pergamena.png" width="1" height="1" alt="pergamena" />
+    </div>
+}

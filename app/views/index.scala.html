@@ -1,0 +1,45 @@
+@main(null,null){
+    
+    <!-- CLEANED CODE-->
+    <!--Flash scope is place where we can store variables
+        between requests. Everything in flash scope is there until the following request,
+        and is then deleted.
+        We are just printing the error message here
+        TODO: BETTER INTERFACE FOR THE ERRORS-->
+    
+    <!--  @if(flash.containsKey("error")) {
+        <div class="alert-message error">
+            <p>
+                <strong>Oops!</strong> @flash.get("error")
+            </p>
+        </div>
+        
+    } -->
+	
+	
+    <div class="homepage">
+        <a class="brand" href="@routes.Sketchness.index()"></a>
+        
+        <!--LOGIN FORM TO GET USERNAME AND PASSWORD, NEEDS TO BE FIXED-->
+        <!--NOTE: THE PAGES ARE SERVED BY THE CONTROLLER, WHICH IS CALLED APPLICATION-->
+        <form id="loginForm" action="@routes.Sketchness.lobby()">
+                            <input id="username" name="username" class="input-small" type="text" placeholder="Username">
+                            <button id="login" type="submit"></button>
+        </form>
+        
+        <!--THE SOCIAL NETWORKS LOGIN HAS TO BE PROPERLY IMPLEMENTED-
+        <form id="socialNetworks" action="@routes.Sketchness.chatRoom()">
+                            <button id="facebook" class="social-network" type="submit"></button>
+                            <button id="twitter" class="social-network" type="submit"></button>
+        </form>-->
+        
+        <div id="facebookLike">
+            <iframe src="//www.facebook.com/plugins/follow.php?href=https%3A%2F%2Fwww.facebook.com%2FCUbRIKproject&amp;layout=standard&amp;show_faces=false&amp;colorscheme=light&amp;font=tahoma" mce_src="http://www.facebook.com/plugins/follow.php?href=https%3A%2F%2Fwww.facebook.com%2FCUbRIKproject&amp;layout=standard&amp;show_faces=false&amp;colorscheme=light&amp;font=tahoma" style="border:none; overflow:hidden; width:250px;" allowtransparency="true" frameborder="0" scrolling="no">
+            </iframe>
+        </div>
+        <div id="twitterFollow">
+            <a href="https://twitter.com/cubrikproject" class="twitter-follow-button" data-show-count="false" data-size="large">Follow cubrikproject</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+    </div>
+}
